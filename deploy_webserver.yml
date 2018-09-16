@@ -1,0 +1,28 @@
+---
+
+- name: install apache and deploy hello world html file
+  hosts: webservers
+  become: true
+  remote_user: ec2-user
+  gather_facts: true
+     
+
+  tasks:
+  - name: install apache web server
+    yum: name=httpd state=latest
+
+  - name: start the apache web server
+    service: name=httpd state=started
+
+  - name: ensure apache server is running
+    service: name=httpd state=started enabled=yes
+
+  - name: copy index.html file to web server 
+    copy: src=index.html dest=/var/www/html/index.html force=yes mode=0644
+    notify:
+    - restart apache web server
+
+  handlers: 
+  - name: restart apache web server
+    service: name=httpd state=restarted
+
