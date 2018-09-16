@@ -1,0 +1,21 @@
+---
+
+- name: uninstall apache and delete the html file in web folder
+  hosts: webservers
+  become: true
+  remote_user: ec2-user
+  gather_facts: true
+
+  tasks:
+  - name: Delete the index.html file from web folder
+    file: path=/var/www/html/index.html state=absent
+
+  - name: stop the apache web server
+    service: name=httpd state=stopped
+
+  - name: uninstall apache web server
+    yum: name=httpd state=absent
+
+  
+  
+
