@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.twittercontent {
+	width: 100%;
+}
+
+.left-content {
+	float: left;
+	width: 35%;
+}
+.middle-content {
+	float: left;
+	width: 25%
+}
+.right-content {
+	float: left;
+	    width: 40%;
+}
+.formfields {
+	float:left;
+	    padding: 1%;
+}
+.response {
+	padding: 5% 1%;
+}
+button {
+	color: #1DA1F2 !important;
+}
